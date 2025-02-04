@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhatsApp Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/71dac4e3f9.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- layout -->
+    <div class="flex w-full" id="">
+      <!-- cards section -->
+      <section class="sm:w-1/4 sm:block hidden flex-col bg-white">
+        <!-- cards navbar -->
+        <nav class='h-[80px] w-full bg-[#eeeeee] flex items-center justify-between p-4'>
+          <div class='bg-gray-200 w-[55px] h-[55px] p-2 flex items-center justify-center rounded-full'><i class="fa-solid  fa-user text-[25px] text-white "></i></div>
+          <div class=' p-2 flex items-center justify-center rounded-full gap-10'><i class="fa-solid fa-paperclip text-[25px] text-gray-500 cursor-pointer"></i><i class="fa-solid text-[25px] fa-ellipsis-vertical text-gray-500 cursor-pointer"></i></div>
+        </nav>
+        <!-- cards searchbar -->
+        <div class="h-[70px] flex flex-row items-center  p-4 gap-1 bg-[#fafafa] w-full">
+          <div class="w-[10%] flex items-center justify-center">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <input
+            type="text"
+            class="w-full h-[40px] p-2 outline-none text-black"
+            placeholder="Search or start a new chat"
+          />
+        </div>
+      </section>
+      <!-- card section -->
+       <section class="w-full sm:w-3/4">
+          <!-- card navbar -->
+          <div class='h-[80px] w-full bg-[#eeeeee] flex items-center justify-between p-4'>
+            <div class='bg-gray-200 w-[55px] h-[55px] p-2 flex items-center justify-center rounded-full'><i class="fa-solid  fa-user text-[25px] text-white "></i></div>
+            <div class=' p-2 flex items-center justify-center rounded-full gap-10'><i class="fa-solid fa-paperclip text-[25px] text-gray-500 cursor-pointer"></i><i class="fa-solid text-[25px] fa-ellipsis-vertical text-gray-500 cursor-pointer"></i></div>
+        </div>
+       </section>
+    </div>
+    <!-- <script type="module" src="./js/main.jsx"></script> -->
+    <script
+      src="https://kit.fontawesome.com/71dac4e3f9.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
