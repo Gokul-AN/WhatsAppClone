@@ -1,6 +1,7 @@
 const users = [
   {
     name: "Vijay",
+    id:0,
     messages: [
       {
         content: "Hi",
@@ -11,19 +12,20 @@ const users = [
       {
         content: "How are you?",
         time: "02:05",
-        date: "02.02.2025",
+        date: "02.03.2025",
         sentBy: "me",
       },
       {
         content: "I'm good, thanks!",
         time: "02:06",
-        date: "02.02.2025",
+        date: "02.04.2025",
         sentBy: "Vijay",
       },
     ],
   },
   {
     name: "Anita",
+    id:1,
     messages: [
       {
         content: "Hello",
@@ -47,6 +49,7 @@ const users = [
   },
   {
     name: "Rahul",
+    id:2,
     messages: [
       {
         content: "Hey",
@@ -70,6 +73,7 @@ const users = [
   },
   {
     name: "Bumrah",
+    id:3,
     messages: [
       {
         content: "Good morning",
@@ -93,6 +97,7 @@ const users = [
   },
   {
     name: "Suresh",
+    id:4,
     messages: [
       {
         content: "Hi there",
@@ -117,6 +122,61 @@ const users = [
 ];
 
 let userList = document.getElementById("user-list");
+
+let currentUser = document.querySelector('#user-name')
+let lastseen = document.getElementById('last-seen')
+
+
+let userContent = document.getElementById("chat-content")
+
+let updateUser = (user) => {
+    currentUser.innerText = user.name
+    if (user.messages && user.messages.length > 0) {
+        lastseen = user.messages[user.messages.length - 1].date; 
+    }
+
+    userContent.innerHTML = ""
+
+    if (user.messages && user.name == currentUser.innerText){
+      user.messages.map(obj => {
+          let messageDiv = document.createElement('div')
+          if (obj.sentBy == "me") messageDiv.className = 'flex justify-end'
+          else messageDiv.className = 'flex'
+          let mess = document.createElement('p')
+          mess.className = (obj.sentBy == "me") ? "bg-[#dcfac6] px-4 py-2 rounded-sm" : "bg-[#fff] px-4 py-2 rounded-sm";
+          mess.innerText = obj.content
+          messageDiv.appendChild(mess)
+          userContent.appendChild(messageDiv)
+      });
+    }
+}
+
+const now = new Date();
+
+let addMessage = () => {
+  let newMessage = {
+    content: document.getElementById('input-message').value,
+    sentBy: "me",
+    time: now.getHours() + ":" + now.getMinutes(),
+    date: now.toLocaleDateString()
+  }
+
+  users.forEach(obj => {
+    if(obj.name == currentUser.innerText) {
+      let messageDiv = document.createElement('div')
+        messageDiv.className = 'flex justify-end'
+        let mess = document.createElement('p')
+        mess.className ="bg-[#dcfac6] px-4 py-2 rounded-sm";
+        mess.innerText = newMessage.content
+        messageDiv.appendChild(mess)
+        userContent.appendChild(messageDiv)
+        obj.messages.push(newMessage)
+    }
+  })
+
+}
+
+
 
 users.map((user) => {
   // creating a new user
@@ -160,5 +220,23 @@ users.map((user) => {
   newUser.appendChild(avatarDiv);
   newUser.appendChild(content);
 
+  newUser.onclick = () => updateUser(user)
+
   userList.appendChild(newUser);
+
+  if (user.messages && user.name == currentUser.innerText){
+    user.messages.map(obj => {
+        let messageDiv = document.createElement('div')
+        if (obj.sentBy == "me") messageDiv.className = 'flex justify-end'
+        else messageDiv.className = 'flex'
+        let mess = document.createElement('p')
+        mess.className = (obj.sentBy == "me") ? "bg-[#dcfac6] px-4 py-2 rounded-sm" : "bg-[#fff] px-4 py-2 rounded-sm";
+        mess.innerText = obj.content
+        messageDiv.appendChild(mess)
+        userContent.appendChild(messageDiv)
+    });
+  }
 });
+
+
+
