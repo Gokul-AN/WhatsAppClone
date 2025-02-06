@@ -13,16 +13,16 @@
   <body>
     <!-- layout -->
     <div class="flex w-full" id="">
-      <!-- cards section -->
+      <!-- chat cards section -->
       <section class="sm:w-1/4 sm:block hidden flex-col bg-white">
-        <!-- cards navbar -->
+        <!-- chat cards navbar -->
         <nav
           class="h-[80px] w-full bg-[#eeeeee] flex items-center justify-between p-4"
         >
           <div
             class="bg-gray-200 w-[55px] h-[55px] p-2 flex items-center justify-center rounded-full"
           >
-            <i class="fa-solid fa-user text-[25px] text-white"></i>
+            <i class="fa-solid fa-user text-[25px] text-white cursor-pointer"></i>
           </div>
           <div class="p-2 flex items-center justify-center rounded-full gap-10">
             <i
@@ -33,7 +33,7 @@
             ></i>
           </div>
         </nav>
-        <!-- cards searchbar -->
+        <!-- chat cards searchbar -->
         <div
           class="h-[70px] flex flex-row items-center p-4 gap-1 bg-[#fafafa] w-full"
         >
@@ -47,9 +47,7 @@
           />
         </div>
         <!-- displaying the chat list -->
-        <ul id="user-list" class="p-2">
-          
-        </ul>
+        <ul id="user-list" class="p-2"></ul>
       </section>
       <!-- chat section -->
       <section class="w-full h-screen sm:w-3/4 relative">
@@ -59,17 +57,18 @@
         >
           <div class="flex gap-4">
             <div
-            class="bg-gray-200 w-[55px] h-[55px] p-2 flex items-center justify-center rounded-full"
-          >
-            <i class="fa-solid fa-user text-[25px] text-white"></i>
-            
-          </div>
+              class="bg-gray-200 w-[55px] h-[55px] p-2 flex items-center justify-center rounded-full"
+            >
+              <i class="fa-solid fa-user text-[25px] text-white cursor-pointer"></i>
+            </div>
             <div>
               <h1 class="text-[22px] font-bold" id="user-name">Vijay</h1>
-              <p class="text-[#222222] text-[12px]" id="last-seen">02/04/2025</p>
+              <p class="text-[#222222] text-[12px]" id="last-seen">
+                02/04/2025
+              </p>
             </div>
           </div>
-          
+
           <div class="p-2 flex items-center justify-center rounded-full gap-10">
             <i
               class="fa-solid fa-paperclip text-[25px] text-gray-500 cursor-pointer"
@@ -80,14 +79,27 @@
           </div>
         </div>
         <!-- chat content -->
-         <div class="chat-content flex-col flex h-full p-4 bg-[#eeeeee] gap-2" id="chat-content">
-            <div class="flex justify-end"><p class="bg-[#dcfac6] px-4 py-2 rounded-sm">Hi</p></div>
-         </div>
-         <!-- chat input bar -->
-        <div class="h-[60px] w-full sticky bottom-0 bg-[#eeeeee] flex gap-3 justify-around items-center p-3 z-1">
-          <i class="fa-solid fa-face-smile text-[20px] text-[#777777]"></i>
-          <input type="text" class="h-full w-[90%] p-2 outline-none text-black" id="input-message">
-          <button onclick="addMessage()"><i class="fa-solid fa-paper-plane text-[20px] text-[#777777]"></i></button>
+        <div
+          class="chat-content flex-col flex h-full p-4 bg-[#eeeeee] gap-2"
+          id="chat-content"
+        >
+          <div class="flex justify-end">
+            <p class="bg-[#dcfac6] px-4 py-2 rounded-sm">Hi</p>
+          </div>
+        </div>
+        <!-- chat input bar -->
+        <div
+          class="h-[60px] w-full sticky bottom-0 bg-[#eeeeee] flex gap-3 justify-around items-center p-3 z-1"
+        >
+          <i class="fa-solid fa-face-smile text-[20px] text-[#777777] cursor-pointer"></i>
+          <input
+            type="text"
+            class="h-full w-[90%] p-2 outline-none text-black"
+            id="input-message"
+          />
+          <button onclick="addMessage()">
+            <i class="fa-solid fa-paper-plane text-[20px] text-[#777777] cursor-pointer"></i>
+          </button>
         </div>
       </section>
     </div>

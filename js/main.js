@@ -1,7 +1,7 @@
 const users = [
   {
     name: "Vijay",
-    id:0,
+    id: 0,
     messages: [
       {
         content: "Hi",
@@ -25,7 +25,7 @@ const users = [
   },
   {
     name: "Anita",
-    id:1,
+    id: 1,
     messages: [
       {
         content: "Hello",
@@ -49,7 +49,7 @@ const users = [
   },
   {
     name: "Rahul",
-    id:2,
+    id: 2,
     messages: [
       {
         content: "Hey",
@@ -73,7 +73,7 @@ const users = [
   },
   {
     name: "Bumrah",
-    id:3,
+    id: 3,
     messages: [
       {
         content: "Good morning",
@@ -97,7 +97,7 @@ const users = [
   },
   {
     name: "Suresh",
-    id:4,
+    id: 4,
     messages: [
       {
         content: "Hi there",
@@ -123,60 +123,62 @@ const users = [
 
 let userList = document.getElementById("user-list");
 
-let currentUser = document.querySelector('#user-name')
-let lastseen = document.getElementById('last-seen')
+let currentUser = document.querySelector("#user-name");
+let lastseen = document.getElementById("last-seen");
 
+let userContent = document.getElementById("chat-content");
 
-let userContent = document.getElementById("chat-content")
-
+// updating chat on clicking a user
 let updateUser = (user) => {
-    currentUser.innerText = user.name
-    if (user.messages && user.messages.length > 0) {
-        lastseen = user.messages[user.messages.length - 1].date; 
-    }
+  currentUser.innerText = user.name;
+  if (user.messages && user.messages.length > 0) {
+    lastseen = user.messages[user.messages.length - 1].date;
+  }
 
-    userContent.innerHTML = ""
+  userContent.innerHTML = "";
 
-    if (user.messages && user.name == currentUser.innerText){
-      user.messages.map(obj => {
-          let messageDiv = document.createElement('div')
-          if (obj.sentBy == "me") messageDiv.className = 'flex justify-end'
-          else messageDiv.className = 'flex'
-          let mess = document.createElement('p')
-          mess.className = (obj.sentBy == "me") ? "bg-[#dcfac6] px-4 py-2 rounded-sm" : "bg-[#fff] px-4 py-2 rounded-sm";
-          mess.innerText = obj.content
-          messageDiv.appendChild(mess)
-          userContent.appendChild(messageDiv)
-      });
-    }
-}
+  if (user.messages && user.name == currentUser.innerText) {
+    user.messages.map((obj) => {
+      let messageDiv = document.createElement("div");
+      if (obj.sentBy == "me") messageDiv.className = "flex justify-end";
+      else messageDiv.className = "flex";
+      let mess = document.createElement("p");
+      mess.className =
+        obj.sentBy == "me"
+          ? "bg-[#dcfac6] px-4 py-2 rounded-sm"
+          : "bg-[#fff] px-4 py-2 rounded-sm";
+      mess.innerText = obj.content;
+      messageDiv.appendChild(mess);
+      userContent.appendChild(messageDiv);
+    });
+  }
+};
 
 const now = new Date();
 
+
+// adding up a new message
 let addMessage = () => {
   let newMessage = {
-    content: document.getElementById('input-message').value,
+    content: document.getElementById("input-message").value,
     sentBy: "me",
     time: now.getHours() + ":" + now.getMinutes(),
-    date: now.toLocaleDateString()
-  }
+    date: now.toLocaleDateString(),
+  };
 
-  users.forEach(obj => {
-    if(obj.name == currentUser.innerText) {
-      let messageDiv = document.createElement('div')
-        messageDiv.className = 'flex justify-end'
-        let mess = document.createElement('p')
-        mess.className ="bg-[#dcfac6] px-4 py-2 rounded-sm";
-        mess.innerText = newMessage.content
-        messageDiv.appendChild(mess)
-        userContent.appendChild(messageDiv)
-        obj.messages.push(newMessage)
+  users.forEach((obj) => {
+    if (obj.name == currentUser.innerText) {
+      let messageDiv = document.createElement("div");
+      messageDiv.className = "flex justify-end";
+      let mess = document.createElement("p");
+      mess.className = "bg-[#dcfac6] px-4 py-2 rounded-sm";
+      mess.innerText = newMessage.content;
+      messageDiv.appendChild(mess);
+      userContent.appendChild(messageDiv);
+      obj.messages.push(newMessage);
     }
-  })
-
-}
-
-
+  });
+};
 
 users.map((user) => {
   // creating a new user
@@ -205,7 +207,7 @@ users.map((user) => {
   if (user.messages && user.messages.length > 0) {
     const date = document.createElement("p");
     date.className = "text-[15px] font-normal text-[#444]";
-    date.textContent = user.messages[user.messages.length - 1].time; 
+    date.textContent = user.messages[user.messages.length - 1].time;
     nameDiv.appendChild(date);
   }
 
@@ -220,23 +222,23 @@ users.map((user) => {
   newUser.appendChild(avatarDiv);
   newUser.appendChild(content);
 
-  newUser.onclick = () => updateUser(user)
+  newUser.onclick = () => updateUser(user);
 
   userList.appendChild(newUser);
 
-  if (user.messages && user.name == currentUser.innerText){
-    user.messages.map(obj => {
-        let messageDiv = document.createElement('div')
-        if (obj.sentBy == "me") messageDiv.className = 'flex justify-end'
-        else messageDiv.className = 'flex'
-        let mess = document.createElement('p')
-        mess.className = (obj.sentBy == "me") ? "bg-[#dcfac6] px-4 py-2 rounded-sm" : "bg-[#fff] px-4 py-2 rounded-sm";
-        mess.innerText = obj.content
-        messageDiv.appendChild(mess)
-        userContent.appendChild(messageDiv)
+  if (user.messages && user.name == currentUser.innerText) {
+    user.messages.map((obj) => {
+      let messageDiv = document.createElement("div");
+      if (obj.sentBy == "me") messageDiv.className = "flex justify-end";
+      else messageDiv.className = "flex";
+      let mess = document.createElement("p");
+      mess.className =
+        obj.sentBy == "me"
+          ? "bg-[#dcfac6] px-4 py-2 rounded-sm"
+          : "bg-[#fff] px-4 py-2 rounded-sm";
+      mess.innerText = obj.content;
+      messageDiv.appendChild(mess);
+      userContent.appendChild(messageDiv);
     });
   }
 });
-
-
-
